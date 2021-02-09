@@ -22,7 +22,6 @@ class JournalEntryView(generics.ListAPIView):
 @api_view(['POST'])
 def BackupEntriesAPIView(request):
     if request.method == "POST":
-
         for entry in request.data:
             # datetime.fromtimestamp(float(sys.argv[1])/1000).strftime('%Y-%m-%d %H:%M:%S.%f')
             entry['date'] = datetime.fromtimestamp(entry['date']/1000.0).strftime('%Y-%m-%d %H:%M:%S.%f')
