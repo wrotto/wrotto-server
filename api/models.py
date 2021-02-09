@@ -16,12 +16,16 @@ class MediaType(models.TextChoices):
 
 
 class JournalEntry(models.Model):
+
     title = models.CharField(max_length=64)
     text = models.TextField()
     date = models.DateTimeField()
     mood = models.CharField(max_length=1, choices=Mood.choices,default=Mood.crying)
-    longitude = models.CharField(max_length=64)
-    latitude = models.CharField(max_length=64)
+    longitude = models.FloatField(null=True, blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    locationDisplayName = models.CharField(max_length=255, null=True, blank=True)
+    synchronised = models.BooleanField()
+    lastModified = models.DateTimeField()
 
     def __str__(self):
         return f"{self.title}"
